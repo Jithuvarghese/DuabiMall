@@ -1,20 +1,27 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import { useMemo } from 'react';
+import { AttractionsScene } from '@/components/scenes/AttractionsScene';
+import { ContactScene } from '@/components/scenes/ContactScene';
+import { DiningScene } from '@/components/scenes/DiningScene';
+import { EventsScene } from '@/components/scenes/EventsScene';
+import { LuxuryScene } from '@/components/scenes/LuxuryScene';
+import { OpeningScene } from '@/components/scenes/OpeningScene';
+import { RetailScene } from '@/components/scenes/RetailScene';
+import { WhyScene } from '@/components/scenes/WhyScene';
 import { SCENES } from '@/data/scenes';
 import { useDeckStore } from '@/store/deckStore';
 import { SceneTransition } from './SceneTransition';
 
 const sceneMap = {
-  OpeningScene: dynamic(() => import('@/components/scenes/OpeningScene').then((mod) => mod.OpeningScene), { ssr: false }),
-  WhyScene: dynamic(() => import('@/components/scenes/WhyScene').then((mod) => mod.WhyScene), { ssr: false }),
-  RetailScene: dynamic(() => import('@/components/scenes/RetailScene').then((mod) => mod.RetailScene), { ssr: false }),
-  LuxuryScene: dynamic(() => import('@/components/scenes/LuxuryScene').then((mod) => mod.LuxuryScene), { ssr: false }),
-  DiningScene: dynamic(() => import('@/components/scenes/DiningScene').then((mod) => mod.DiningScene), { ssr: false }),
-  AttractionsScene: dynamic(() => import('@/components/scenes/AttractionsScene').then((mod) => mod.AttractionsScene), { ssr: false }),
-  EventsScene: dynamic(() => import('@/components/scenes/EventsScene').then((mod) => mod.EventsScene), { ssr: false }),
-  ContactScene: dynamic(() => import('@/components/scenes/ContactScene').then((mod) => mod.ContactScene), { ssr: false })
+  OpeningScene,
+  WhyScene,
+  RetailScene,
+  LuxuryScene,
+  DiningScene,
+  AttractionsScene,
+  EventsScene,
+  ContactScene
 } as const;
 
 export function DeckShell() {
