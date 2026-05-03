@@ -5,6 +5,7 @@ import { Sparkles } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { CTAButton } from '@/components/ui/CTAButton';
 import { SceneFrame } from './SceneFrame';
+import { keyStats } from '@/data/stats';
 import { useDeckStore } from '@/store/deckStore';
 
 export function OpeningScene() {
@@ -29,9 +30,20 @@ export function OpeningScene() {
           <CTAButton variant="gold" onClick={() => goToScene('why')}>Explore the Property</CTAButton>
           <CTAButton onClick={() => goToScene('contact')}>Request a Conversation</CTAButton>
         </div>
-        <motion.p className="max-w-xl text-sm uppercase tracking-[0.28em] text-white/50" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}>
-          111 million annual visitors. 1,200+ retail outlets. One destination that behaves like a global stage.
-        </motion.p>
+        <div className="grid gap-4 md:grid-cols-[1.2fr_0.8fr]">
+          <motion.div className="grid gap-3 sm:grid-cols-3" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }}>
+            {keyStats.slice(0, 3).map((stat) => (
+              <div key={stat.label} className="rounded-3xl border border-white/10 bg-black/35 px-5 py-4 backdrop-blur-sm">
+                <p className="text-[0.65rem] uppercase tracking-[0.3em] text-white/45">{stat.label}</p>
+                <p className="mt-2 font-display text-3xl text-gold">{stat.value}</p>
+              </div>
+            ))}
+          </motion.div>
+          <motion.div className="rounded-3xl border border-white/10 bg-white/5 p-5" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65 }}>
+            <p className="text-xs uppercase tracking-[0.3em] text-gold">Pitch Snapshot</p>
+            <p className="mt-3 text-sm leading-7 text-white/65">111 million annual visitors. 1,200+ retail outlets. One destination that behaves like a global stage.</p>
+          </motion.div>
+        </div>
       </SceneFrame>
     </div>
   );
