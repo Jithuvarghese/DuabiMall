@@ -1,7 +1,7 @@
 'use client';
 
 import { SceneFrame } from './SceneFrame';
-import { diningTags } from '@/data/stats';
+import { diningTags } from '../../data/stats';
 
 export function DiningScene() {
   return (

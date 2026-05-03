@@ -1,8 +1,8 @@
 'use client';
 
 import { SceneFrame } from './SceneFrame';
-import { eventHighlights } from '@/data/stats';
-import { useDeckStore } from '@/store/deckStore';
+import { eventHighlights } from '../../data/stats';
+import { useDeckStore } from '../../store/deckStore';
 
 export function EventsScene() {
   const openModule = useDeckStore((state) => state.openModule);

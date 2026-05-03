@@ -1,8 +1,8 @@
 'use client';
 
 import { SceneFrame } from './SceneFrame';
-import { AnimatedCounter } from '@/components/ui/AnimatedCounter';
-import { audienceMix, keyStats } from '@/data/stats';
+import { AnimatedCounter } from '../ui/AnimatedCounter';
+import { audienceMix, keyStats } from '../../data/stats';
 
 export function WhyScene() {
   return (

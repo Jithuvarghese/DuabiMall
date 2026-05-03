@@ -1,16 +1,16 @@
 'use client';
 
 import { useMemo } from 'react';
-import { AttractionsScene } from '@/components/scenes/AttractionsScene';
-import { ContactScene } from '@/components/scenes/ContactScene';
-import { DiningScene } from '@/components/scenes/DiningScene';
-import { EventsScene } from '@/components/scenes/EventsScene';
-import { LuxuryScene } from '@/components/scenes/LuxuryScene';
-import { OpeningScene } from '@/components/scenes/OpeningScene';
-import { RetailScene } from '@/components/scenes/RetailScene';
-import { WhyScene } from '@/components/scenes/WhyScene';
-import { SCENES } from '@/data/scenes';
-import { useDeckStore } from '@/store/deckStore';
+import { AttractionsScene } from '../scenes/AttractionsScene';
+import { ContactScene } from '../scenes/ContactScene';
+import { DiningScene } from '../scenes/DiningScene';
+import { EventsScene } from '../scenes/EventsScene';
+import { LuxuryScene } from '../scenes/LuxuryScene';
+import { OpeningScene } from '../scenes/OpeningScene';
+import { RetailScene } from '../scenes/RetailScene';
+import { WhyScene } from '../scenes/WhyScene';
+import { SCENES } from '../../data/scenes';
+import { useDeckStore } from '../../store/deckStore';
 import { SceneTransition } from './SceneTransition';
 
 const sceneMap = {

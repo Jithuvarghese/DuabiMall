@@ -2,8 +2,8 @@
 
 import { useEffect, useId } from 'react';
 import { motion } from 'framer-motion';
-import { CTAButton } from '@/components/ui/CTAButton';
-import { cn } from '@/utils/cn';
+import { CTAButton } from '../ui/CTAButton';
+import { cn } from '../../utils/cn';
 
 interface ModuleShellProps {
   title: string;

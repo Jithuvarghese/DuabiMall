@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { setLenisInstance } from '@/hooks/useLenis';
+import { setLenisInstance } from '../hooks/useLenis';
 
 gsap.registerPlugin(ScrollTrigger);
 

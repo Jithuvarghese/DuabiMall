@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { SCENES } from '@/data/scenes';
+import { SCENES } from '../data/scenes';
 
 interface DeckState {
   currentSceneId: string;

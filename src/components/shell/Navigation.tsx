@@ -2,10 +2,10 @@
 
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { SCENES } from '@/data/scenes';
-import { CTAButton } from '@/components/ui/CTAButton';
-import { cn } from '@/utils/cn';
-import { useDeckStore } from '@/store/deckStore';
+import { SCENES } from '../../data/scenes';
+import { CTAButton } from '../ui/CTAButton';
+import { cn } from '../../utils/cn';
+import { useDeckStore } from '../../store/deckStore';
 
 export function Navigation() {
   const currentSceneId = useDeckStore((state) => state.currentSceneId);

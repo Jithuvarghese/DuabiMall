@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes } from 'react';
-import { cn } from '@/utils/cn';
+import { cn } from '../../utils/cn';
 
 interface CTAButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'gold' | 'ghost';

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { SceneFrame } from './SceneFrame';
-import { useDeckStore } from '@/store/deckStore';
+import { useDeckStore } from '../../store/deckStore';
 
 export function ContactScene() {
   const openModule = useDeckStore((state) => state.openModule);

@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { MODULES } from '@/data/modules';
-import { moduleTabs } from '@/data/stats';
-import { useDeckStore } from '@/store/deckStore';
+import { MODULES } from '../../data/modules';
+import { moduleTabs } from '../../data/stats';
+import { useDeckStore } from '../../store/deckStore';
 import { ModuleShell } from './ModuleShell';
 
 const moduleCopy: Record<string, Record<string, { title: string; body: string; points: string[] }>> = {

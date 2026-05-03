@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { useVideoLoader } from '@/hooks/useVideoLoader';
+import { useVideoLoader } from '../../hooks/useVideoLoader';
 
 interface VideoBackgroundProps {
   src?: string;
@@ -14,6 +14,7 @@ interface VideoBackgroundProps {
 export function VideoBackground({ src, fallback, sceneIndex, currentSceneIndex, poster }: VideoBackgroundProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const shouldLoad = useVideoLoader(sceneIndex, currentSceneIndex);
+  const sourceType = src?.toLowerCase().endsWith('.mp4') ? 'video/mp4' : 'video/webm';
 
   useEffect(() => {
     const video = videoRef.current;
@@ -41,8 +42,7 @@ export function VideoBackground({ src, fallback, sceneIndex, currentSceneIndex, 
       poster={poster}
       preload="metadata"
     >
-      {src ? <source src={src} type="video/webm" /> : null}
-      <source src="/videos/fallback.mp4" type="video/mp4" />
+      {src ? <source src={src} type={sourceType} /> : null}
     </video>
   );
 }

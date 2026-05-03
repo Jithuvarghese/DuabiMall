@@ -1,8 +1,8 @@
 'use client';
 
 import { useMemo } from 'react';
-import { SCENES } from '@/data/scenes';
-import { useDeckStore } from '@/store/deckStore';
+import { SCENES } from '../../data/scenes';
+import { useDeckStore } from '../../store/deckStore';
 
 export function ProgressBar() {
   const currentSceneId = useDeckStore((state) => state.currentSceneId);

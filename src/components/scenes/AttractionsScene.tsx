@@ -1,8 +1,8 @@
 'use client';
 
 import { SceneFrame } from './SceneFrame';
-import { attractionCards } from '@/data/stats';
-import { useDeckStore } from '@/store/deckStore';
+import { attractionCards } from '../../data/stats';
+import { useDeckStore } from '../../store/deckStore';
 
 export function AttractionsScene() {
   const openModule = useDeckStore((state) => state.openModule);

@@ -1,8 +1,8 @@
 'use client';
 
 import { SceneFrame } from './SceneFrame';
-import { brandNames } from '@/data/stats';
-import { useDeckStore } from '@/store/deckStore';
+import { brandNames } from '../../data/stats';
+import { useDeckStore } from '../../store/deckStore';
 
 export function RetailScene() {
   const openModule = useDeckStore((state) => state.openModule);
