@@ -16,6 +16,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={`${display.variable} ${body.variable} bg-deck-black text-white antialiased`}>
+        <link rel="preload" href="/videos/Intro.mp4" as="video" type="video/mp4" />
         <SmoothScrollProvider>
           <Preloader>{children}</Preloader>
         </SmoothScrollProvider>

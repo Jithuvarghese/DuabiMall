@@ -28,9 +28,18 @@ export function ModuleShell({ title, tabs, activeTab, onTabChange, onClose, chil
     document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', onKeyDown);
 
+    // focus management: focus first focusable in dialog and restore on close
+    const previousActive = document.activeElement as HTMLElement | null;
+    const dialog = document.querySelector('[role="dialog"]') as HTMLElement | null;
+    if (dialog) {
+      const focusable = dialog.querySelector<HTMLElement>("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])");
+      focusable?.focus();
+    }
+
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', onKeyDown);
+      previousActive?.focus?.();
     };
   }, [onClose]);
 

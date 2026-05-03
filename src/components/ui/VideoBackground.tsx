@@ -14,7 +14,8 @@ interface VideoBackgroundProps {
 export function VideoBackground({ src, fallback, sceneIndex, currentSceneIndex, poster }: VideoBackgroundProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const shouldLoad = useVideoLoader(sceneIndex, currentSceneIndex);
-  const sourceType = src?.toLowerCase().endsWith('.mp4') ? 'video/mp4' : 'video/webm';
+  const isMp4 = src?.toLowerCase().endsWith('.mp4');
+  const webmFallback = src ? src.replace(/\.mp4$/i, '.webm') : undefined;
 
   useEffect(() => {
     const video = videoRef.current;
@@ -41,8 +42,10 @@ export function VideoBackground({ src, fallback, sceneIndex, currentSceneIndex, 
       playsInline
       poster={poster}
       preload="metadata"
+      aria-hidden={true}
     >
-      {src ? <source src={src} type={sourceType} /> : null}
+      {webmFallback ? <source src={webmFallback} type="video/webm" /> : null}
+      {isMp4 ? <source src={src} type="video/mp4" /> : src ? <source src={src} type="video/webm" /> : null}
     </video>
   );
 }
