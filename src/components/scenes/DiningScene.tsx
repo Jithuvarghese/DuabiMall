@@ -12,8 +12,8 @@ export function DiningScene() {
       title="Food is a draw, not an afterthought."
       description="Dining at Dubai Mall behaves like its own destination layer, extending dwell time and supporting premium activations."
     >
-      <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-        <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
           {['Fine Dining', 'Indoor District', 'Terrace Views', 'Late-Night Flow'].map((item, index) => (
             <motion.div key={item} className="rounded-3xl border border-white/10 bg-white/5 p-6" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.08 }}>
               <p className="font-display text-3xl text-white">{item}</p>

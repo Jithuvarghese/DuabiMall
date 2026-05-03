@@ -12,8 +12,8 @@ export function WhyScene() {
       title="The world does not visit a mall. It visits Dubai Mall."
       description="Scale, visitor mix, and regional pull combine into a property story that reads like a global platform, not a retail center."
     >
-      <div className="grid gap-4 lg:grid-cols-[1.25fr_0.75fr]">
-        <div className="grid gap-4 md:grid-cols-5">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.25fr_0.75fr]">
+        <div className="grid gap-3 sm:gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {keyStats.map((stat) => (
             <div key={stat.label} className="rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
               <p className="text-xs uppercase tracking-[0.3em] text-white/45">{stat.label}</p>
@@ -25,7 +25,7 @@ export function WhyScene() {
           <Image src="/images/Dubai%20Mall.jpg" alt="Dubai Mall aerial view" width={1200} height={800} className="h-full min-h-[220px] w-full object-cover opacity-80" sizes="(max-width: 1024px) 100vw, 50vw" priority={false} />
         </div>
       </div>
-      <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-[0.8fr_1.2fr]">
         <div className="rounded-[2rem] border border-white/10 bg-black/30 p-6">
           <p className="text-xs uppercase tracking-[0.3em] text-gold">Audience Mix</p>
           <div className="mt-6 space-y-4">
@@ -42,7 +42,7 @@ export function WhyScene() {
         </div>
         <div className="rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top,_rgba(201,169,110,0.13),_transparent_34%),linear-gradient(135deg,_rgba(255,255,255,0.05),_rgba(255,255,255,0.02))] p-6">
           <p className="text-xs uppercase tracking-[0.3em] text-gold">Catchment</p>
-          <div className="mt-6 flex h-80 items-center justify-center rounded-[2rem] border border-white/10 bg-[url('/images/Dubai%20Mall%20pot.jpg')] bg-cover bg-center">
+          <div className="mt-6 flex h-56 sm:h-72 lg:h-80 items-center justify-center rounded-[2rem] border border-white/10 bg-[url('/images/Dubai%20Mall%20pot.jpg')] bg-cover bg-center">
             <div className="flex flex-col items-center gap-4 rounded-[2rem] bg-black/55 px-6 py-8 text-center backdrop-blur-sm">
               <div className="h-32 w-32 rounded-full border border-gold/60" />
               <div className="h-24 w-24 rounded-full border border-gold/40" />

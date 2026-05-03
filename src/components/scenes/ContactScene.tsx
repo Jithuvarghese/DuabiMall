@@ -66,21 +66,21 @@ export function ContactScene() {
         Active path: <span className="text-gold">{activePath}</span>
       </div>
 
-      <form onSubmit={handleSubmit} className="mt-8 grid gap-4 rounded-[1.5rem] border border-white/10 bg-white/5 p-6">
-        <div className="grid gap-3 sm:grid-cols-2">
-          <input required className="rounded-md bg-black/10 p-3 text-white" placeholder="Your name" value={form.name} onChange={(e) => setForm((s) => ({ ...s, name: e.target.value }))} />
-          <input required type="email" className="rounded-md bg-black/10 p-3 text-white" placeholder="Email" value={form.email} onChange={(e) => setForm((s) => ({ ...s, email: e.target.value }))} />
+      <form onSubmit={handleSubmit} className="mt-8 grid gap-3 rounded-[1.5rem] border border-white/10 bg-white/5 p-4 sm:gap-4 sm:p-6 md:p-8">
+        <div className="grid gap-3 grid-cols-1 sm:grid-cols-2">
+          <input required className="rounded-md bg-black/10 p-3 text-white text-sm sm:text-base placeholder-white/50" placeholder="Your name" value={form.name} onChange={(e) => setForm((s) => ({ ...s, name: e.target.value }))} />
+          <input required type="email" className="rounded-md bg-black/10 p-3 text-white text-sm sm:text-base placeholder-white/50" placeholder="Email" value={form.email} onChange={(e) => setForm((s) => ({ ...s, email: e.target.value }))} />
         </div>
-        <input className="rounded-md bg-black/10 p-3 text-white" placeholder="Company (optional)" value={form.company} onChange={(e) => setForm((s) => ({ ...s, company: e.target.value }))} />
-        <select className="rounded-md bg-black/10 p-3 text-white w-64" value={form.category} onChange={(e) => setForm((s) => ({ ...s, category: e.target.value }))}>
+        <input className="rounded-md bg-black/10 p-3 text-white text-sm sm:text-base placeholder-white/50" placeholder="Company (optional)" value={form.company} onChange={(e) => setForm((s) => ({ ...s, company: e.target.value }))} />
+        <select className="rounded-md bg-black/10 p-3 text-white w-full text-sm sm:text-base cursor-pointer" value={form.category} onChange={(e) => setForm((s) => ({ ...s, category: e.target.value }))}>
           <option value="leasing">Retail Leasing</option>
           <option value="sponsorship">Brand Partnerships</option>
           <option value="events">Event Production</option>
         </select>
-        <textarea required className="h-40 rounded-md bg-black/10 p-3 text-white" placeholder="Tell us about your inquiry" value={form.message} onChange={(e) => setForm((s) => ({ ...s, message: e.target.value }))} />
-        <div className="flex items-center gap-3">
-          <button type="submit" className="rounded-full bg-gold px-5 py-3 text-black">Send Inquiry</button>
-          <div className="text-sm text-white/70">{status}</div>
+        <textarea required className="h-28 sm:h-36 md:h-40 rounded-md bg-black/10 p-3 text-white text-sm sm:text-base placeholder-white/50 resize-none" placeholder="Tell us about your inquiry" value={form.message} onChange={(e) => setForm((s) => ({ ...s, message: e.target.value }))} />
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
+          <button type="submit" className="rounded-full bg-gold px-4 py-2 sm:px-5 sm:py-3 text-black text-sm sm:text-base font-medium transition hover:bg-gold/90 active:scale-95">Send Inquiry</button>
+          {status && <div className="text-xs sm:text-sm text-white/70">{status}</div>}
         </div>
       </form>
     </SceneFrame>

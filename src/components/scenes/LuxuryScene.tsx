@@ -13,8 +13,8 @@ export function LuxuryScene() {
       title="Fashion Avenue, where the world’s most coveted brands call home."
       description="This section slows down the pacing and lets the material breathe, mirroring the editorial rhythm the assignment asks for."
     >
-      <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-        <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="grid gap-3 sm:gap-5 grid-cols-1 sm:grid-cols-2">
           {cards.map((card, index) => (
             <motion.div
               key={card}
