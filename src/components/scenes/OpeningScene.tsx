@@ -7,16 +7,19 @@ import { CTAButton } from '@/components/ui/CTAButton';
 import { SceneFrame } from './SceneFrame';
 import { keyStats } from '@/data/stats';
 import { useDeckStore } from '@/store/deckStore';
+import { VideoBackground } from '@/components/ui/VideoBackground';
+import { SCENES } from '@/data/scenes';
 
 export function OpeningScene() {
   const goToScene = useDeckStore((state) => state.goToScene);
+  const currentSceneId = useDeckStore((state) => state.currentSceneId);
+  const currentIndex = SCENES.findIndex((s) => s.id === currentSceneId);
+  const openingIndex = SCENES.findIndex((s) => s.id === 'opening');
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-black">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(201,169,110,0.24),_transparent_36%),linear-gradient(180deg,_rgba(0,0,0,0.45),_rgba(0,0,0,0.92))]" />
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center" />
-      </div>
+      <VideoBackground src="/videos/opener.webm" poster="/images/opener-poster.jpg" sceneIndex={openingIndex} currentSceneIndex={currentIndex} />
       <Canvas className="absolute inset-0" camera={{ position: [0, 0, 5] }}>
         <ambientLight intensity={0.6} />
         <Sparkles count={70} color="#C9A96E" speed={0.35} scale={[10, 10, 10]} />
