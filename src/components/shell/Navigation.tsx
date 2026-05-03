@@ -32,7 +32,7 @@ export function Navigation() {
     <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/40 backdrop-blur-2xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-10">
         <button onClick={() => goToScene('opening')} aria-label="Go to home" className="flex items-center gap-3">
-          <img src="/images/Logo.png" alt="Dubai Mall" className="h-10 w-auto object-contain" />
+          <img src="/images/Logo.png" alt="Dubai Mall" className="h-14 w-auto object-contain" />
         </button>
 
         <nav className="hidden items-center gap-3 md:flex">
@@ -63,9 +63,9 @@ export function Navigation() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <button className="hidden rounded-full border border-white/15 px-4 py-2 text-xs uppercase tracking-[0.24em] text-white/75 lg:inline-flex" onClick={() => openModule('events')}>
+          <CTAButton className="hidden lg:inline-flex" onClick={() => openModule('events')}>
             Request a Meeting
-          </button>
+          </CTAButton>
           <CTAButton variant="gold" onClick={() => goToScene('contact')}>
             Contact
           </CTAButton>

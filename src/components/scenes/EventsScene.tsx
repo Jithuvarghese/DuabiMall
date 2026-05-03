@@ -5,7 +5,8 @@ import { eventHighlights } from '../../data/stats';
 import { useDeckStore } from '../../store/deckStore';
 
 export function EventsScene() {
-  const openModule = useDeckStore((state) => state.openModule);
+  const goToScene = useDeckStore((s) => s.goToScene);
+  const setFormPrefill = useDeckStore((s) => s.setFormPrefill);
 
   return (
     <SceneFrame
@@ -22,7 +23,14 @@ export function EventsScene() {
             <li>Rigging and production support</li>
             <li>Flexible partner branding rights</li>
           </ul>
-          <button className="mt-6 rounded-full border border-gold px-5 py-3 text-xs uppercase tracking-[0.24em] text-gold" onClick={() => openModule('events')}>
+          <button
+            className="mt-6 rounded-full border border-gold px-5 py-3 text-xs uppercase tracking-[0.24em] text-gold"
+            onClick={() => {
+              // Prefill contact form with event category and jump to contact scene
+              setFormPrefill({ category: 'events', message: 'Inquiry about hosting an event at Dubai Mall' });
+              goToScene('contact');
+            }}
+          >
             Submit an Event Inquiry
           </button>
         </div>

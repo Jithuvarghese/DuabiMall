@@ -5,6 +5,7 @@ interface DeckState {
   currentSceneId: string;
   modalId: string | null;
   activeModule: string | null;
+  formPrefill: Record<string, string> | null;
   goToScene: (id: string) => void;
   nextScene: () => void;
   previousScene: () => void;
@@ -12,6 +13,7 @@ interface DeckState {
   closeModal: () => void;
   openModule: (id: string) => void;
   closeModule: () => void;
+  setFormPrefill: (data: Record<string, string> | null) => void;
 }
 
 const firstSceneId = SCENES[0]?.id ?? 'opening';
@@ -20,6 +22,7 @@ export const useDeckStore = create<DeckState>((set, get) => ({
   currentSceneId: firstSceneId,
   modalId: null,
   activeModule: null,
+  formPrefill: null,
   goToScene: (id) => set({ currentSceneId: id }),
   nextScene: () => {
     const currentIndex = SCENES.findIndex((scene) => scene.id === get().currentSceneId);
@@ -35,4 +38,6 @@ export const useDeckStore = create<DeckState>((set, get) => ({
   closeModal: () => set({ modalId: null }),
   openModule: (id) => set({ activeModule: id }),
   closeModule: () => set({ activeModule: null })
+  ,
+  setFormPrefill: (data) => set({ formPrefill: data })
 }));
