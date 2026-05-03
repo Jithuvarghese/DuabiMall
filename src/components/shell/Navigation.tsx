@@ -31,18 +31,18 @@ export function Navigation() {
   return (
     <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/40 backdrop-blur-2xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-10">
-        <button onClick={() => goToScene('opening')} className="font-display text-2xl text-white">
-          Dubai Mall
+        <button onClick={() => goToScene('opening')} aria-label="Go to home" className="flex items-center gap-3">
+          <img src="/images/Logo.png" alt="Dubai Mall" className="h-10 w-auto object-contain" />
         </button>
 
         <nav className="hidden items-center gap-3 md:flex">
-          {SCENES.map((scene, index) => {
+          {SCENES.filter((s) => s.id !== 'opening').map((scene, index) => {
             const active = scene.id === currentSceneId;
             return (
               <button
                 key={scene.id}
                 onClick={() => goToScene(scene.id)}
-                className={cn('group flex items-center gap-2 rounded-full px-2 py-1 text-xs uppercase tracking-[0.22em] text-white/60 transition hover:text-white', active && 'text-white')}
+                className={cn('group flex items-center gap-2 rounded-full px-3 py-2 text-xs uppercase tracking-[0.22em] text-white/70 transition hover:text-white', active && 'text-white')}
               >
                 <span className="relative flex h-3 w-3 items-center justify-center">
                   {active ? (
@@ -55,7 +55,7 @@ export function Navigation() {
                     <span className="h-2 w-2 rounded-full bg-white/35 transition group-hover:bg-gold/70" />
                   )}
                 </span>
-                <span>{scene.shortLabel}</span>
+                <span className="px-1">{scene.shortLabel}</span>
                 <span className="sr-only">{index + 1}</span>
               </button>
             );
