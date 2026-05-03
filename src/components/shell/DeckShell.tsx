@@ -30,7 +30,7 @@ export function DeckShell() {
   const SceneComponent = sceneMap[currentScene.component as keyof typeof sceneMap];
 
   return (
-    <main className="relative min-h-screen overflow-y-auto bg-deck-radial text-white">
+    <main className="relative min-h-screen overflow-y-auto overflow-x-hidden scrollbar-hide touch-pan-y bg-deck-radial text-white">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(201,169,110,0.14),_transparent_38%)]" />
       <SceneTransition sceneKey={currentScene.id}>
         <SceneComponent />

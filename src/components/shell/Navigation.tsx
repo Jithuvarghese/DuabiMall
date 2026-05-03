@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { SCENES } from '../../data/scenes';
@@ -14,14 +14,19 @@ export function Navigation() {
   const nextScene = useDeckStore((state) => state.nextScene);
   const previousScene = useDeckStore((state) => state.previousScene);
   const openModule = useDeckStore((state) => state.openModule);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'ArrowRight') nextScene();
       if (event.key === 'ArrowLeft') previousScene();
+      if (event.key === 'Escape') setMenuOpen(false);
       if (event.key >= '1' && event.key <= String(SCENES.length)) {
         const scene = SCENES[Number(event.key) - 1];
-        if (scene) goToScene(scene.id);
+        if (scene) {
+          goToScene(scene.id);
+          setMenuOpen(false);
+        }
       }
     };
 
@@ -55,7 +60,21 @@ export function Navigation() {
                   ) : (
                     <span className="h-2 w-2 rounded-full bg-white/35 transition group-hover:bg-gold/70" />
                   )}
-                </span>
+                <div className="flex items-center justify-end gap-2 self-center justify-self-end">
+                  <button
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded={menuOpen}
+                    onClick={() => setMenuOpen((value) => !value)}
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:border-gold/60 hover:text-gold lg:hidden"
+                  >
+                    <span className="sr-only">Menu</span>
+                    <span className="relative flex h-4 w-4 items-center justify-center">
+                      <span className={cn('absolute h-0.5 w-4 rounded-full bg-current transition-transform', menuOpen ? 'translate-y-0 rotate-45' : '-translate-y-1.5')} />
+                      <span className={cn('absolute h-0.5 w-4 rounded-full bg-current transition-opacity', menuOpen ? 'opacity-0' : 'opacity-100')} />
+                      <span className={cn('absolute h-0.5 w-4 rounded-full bg-current transition-transform', menuOpen ? 'translate-y-0 -rotate-45' : 'translate-y-1.5')} />
+                    </span>
+                  </button>
                 <span className="px-1">{scene.shortLabel}</span>
                 <span className="sr-only">{index + 1}</span>
               </button>
@@ -64,6 +83,48 @@ export function Navigation() {
         </nav>
 
         <div className="flex items-center justify-end gap-2 self-center justify-self-end">
+
+              {menuOpen && (
+                <motion.div
+                  className="border-t border-white/10 bg-black/90 px-3 py-4 shadow-2xl backdrop-blur-2xl lg:hidden"
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.18, ease: 'easeOut' }}
+                >
+                  <div className="mx-auto flex max-w-[1680px] flex-col gap-4">
+                    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                      {SCENES.filter((s) => s.id !== 'opening').map((scene) => {
+                        const active = scene.id === currentSceneId;
+                        return (
+                          <button
+                            key={scene.id}
+                            onClick={() => {
+                              goToScene(scene.id);
+                              setMenuOpen(false);
+                            }}
+                            className={cn('rounded-2xl border px-3 py-3 text-left text-xs uppercase tracking-[0.18em] transition', active ? 'border-gold bg-gold/10 text-white' : 'border-white/10 bg-white/5 text-white/70')}
+                          >
+                            <span className="block text-[10px] text-white/45">{scene.shortLabel}</span>
+                            <span className="mt-1 block text-[11px] leading-4">{scene.label}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                      <CTAButton className="h-11 w-full justify-center px-4 text-[10px] leading-none" onClick={() => openModule('events')}>
+                        Request a Meeting
+                      </CTAButton>
+                      <CTAButton variant="gold" className="h-11 w-full justify-center px-4 text-[10px] leading-none" onClick={() => {
+                        goToScene('contact');
+                        setMenuOpen(false);
+                      }}>
+                        Contact
+                      </CTAButton>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
           <CTAButton className="hidden h-8 sm:h-9 md:h-10 shrink-0 whitespace-nowrap px-3 sm:px-4 text-[8px] sm:text-[9px] md:text-[10px] leading-none lg:inline-flex" onClick={() => openModule('events')}>
             Request a Meeting
           </CTAButton>

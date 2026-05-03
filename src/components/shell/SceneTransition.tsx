@@ -12,7 +12,7 @@ export function SceneTransition({ children, sceneKey }: SceneTransitionProps) {
     <AnimatePresence mode="wait">
       <motion.div
         key={sceneKey}
-        className="absolute inset-0"
+        className="relative min-h-screen w-full"
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -24 }}

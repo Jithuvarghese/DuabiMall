@@ -12,7 +12,7 @@ interface SceneFrameProps {
 export function SceneFrame({ eyebrow, title, description, children, className }: SceneFrameProps) {
   return (
     <section className={cn('relative min-h-screen px-3 pb-8 pt-24 sm:px-5 sm:pb-10 sm:pt-28 md:px-8 lg:px-10 lg:pb-12 lg:pt-32', className)}>
-      <div className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-7xl flex-col justify-between gap-6 sm:gap-8 lg:gap-10">
+      <div className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-7xl flex-col justify-start gap-8 sm:gap-10">
         <motion.div
           className="max-w-3xl"
           initial={{ opacity: 0, y: 24 }}

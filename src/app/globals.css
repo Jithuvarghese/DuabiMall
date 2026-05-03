@@ -8,6 +8,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none;
 }
 
 body {
@@ -15,6 +16,23 @@ body {
   background: #050505;
   color: #fff;
   font-family: var(--font-body), sans-serif;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  touch-action: pan-y;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* If a global hero background is needed, prefer local asset */
