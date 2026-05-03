@@ -19,7 +19,7 @@ export function OpeningScene() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-black">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(201,169,110,0.24),_transparent_36%),linear-gradient(180deg,_rgba(0,0,0,0.45),_rgba(0,0,0,0.92))]" />
-      <VideoBackground src="/videos/Intro.mp4" poster="/images/Dubai%20Mall%20pot.jpg" sceneIndex={openingIndex} currentSceneIndex={currentIndex} />
+      <VideoBackground src="/videos/videoplayback.mp4" poster="/images/Dubai%20Mall%20pot.jpg" sceneIndex={openingIndex} currentSceneIndex={currentIndex} />
       <Canvas className="absolute inset-0" camera={{ position: [0, 0, 5] }}>
         <ambientLight intensity={0.6} />
         <Sparkles count={70} color="#C9A96E" speed={0.35} scale={[10, 10, 10]} />

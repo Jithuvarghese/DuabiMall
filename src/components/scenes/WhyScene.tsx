@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { SceneFrame } from './SceneFrame';
 import { AnimatedCounter } from '../ui/AnimatedCounter';
 import { audienceMix, keyStats } from '../../data/stats';
@@ -11,13 +12,18 @@ export function WhyScene() {
       title="The world does not visit a mall. It visits Dubai Mall."
       description="Scale, visitor mix, and regional pull combine into a property story that reads like a global platform, not a retail center."
     >
-      <div className="grid gap-4 md:grid-cols-5">
-        {keyStats.map((stat) => (
-          <div key={stat.label} className="rounded-3xl border border-white/10 bg-white/5 p-5">
-            <p className="text-xs uppercase tracking-[0.3em] text-white/45">{stat.label}</p>
-            <p className="mt-4 font-display text-4xl text-gold"><AnimatedCounter value={Number.parseInt(stat.value.replace(/[^0-9]/g, ''), 10) || 0} suffix={stat.value.replace(/[0-9,]/g, '')} /></p>
-          </div>
-        ))}
+      <div className="grid gap-4 lg:grid-cols-[1.25fr_0.75fr]">
+        <div className="grid gap-4 md:grid-cols-5">
+          {keyStats.map((stat) => (
+            <div key={stat.label} className="rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
+              <p className="text-xs uppercase tracking-[0.3em] text-white/45">{stat.label}</p>
+              <p className="mt-4 font-display text-4xl text-gold"><AnimatedCounter value={Number.parseInt(stat.value.replace(/[^0-9]/g, ''), 10) || 0} suffix={stat.value.replace(/[0-9,]/g, '')} /></p>
+            </div>
+          ))}
+        </div>
+        <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-black/30">
+          <Image src="/images/Dubai%20Mall.jpg" alt="Dubai Mall aerial view" width={1200} height={800} className="h-full min-h-[220px] w-full object-cover opacity-80" sizes="(max-width: 1024px) 100vw, 50vw" priority={false} />
+        </div>
       </div>
       <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
         <div className="rounded-[2rem] border border-white/10 bg-black/30 p-6">
@@ -36,10 +42,10 @@ export function WhyScene() {
         </div>
         <div className="rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top,_rgba(201,169,110,0.13),_transparent_34%),linear-gradient(135deg,_rgba(255,255,255,0.05),_rgba(255,255,255,0.02))] p-6">
           <p className="text-xs uppercase tracking-[0.3em] text-gold">Catchment</p>
-          <div className="mt-6 flex h-80 items-center justify-center rounded-[2rem] border border-white/10 bg-black/30">
-            <div className="flex flex-col items-center gap-4 text-center">
-              <div className="h-40 w-40 rounded-full border border-gold/60" />
-              <div className="h-28 w-28 rounded-full border border-gold/40" />
+          <div className="mt-6 flex h-80 items-center justify-center rounded-[2rem] border border-white/10 bg-[url('/images/Dubai%20Mall%20pot.jpg')] bg-cover bg-center">
+            <div className="flex flex-col items-center gap-4 rounded-[2rem] bg-black/55 px-6 py-8 text-center backdrop-blur-sm">
+              <div className="h-32 w-32 rounded-full border border-gold/60" />
+              <div className="h-24 w-24 rounded-full border border-gold/40" />
               <div className="text-sm uppercase tracking-[0.25em] text-white/60">Metro direct access · 30 min · 60 min</div>
             </div>
           </div>

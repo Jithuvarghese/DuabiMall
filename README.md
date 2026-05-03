@@ -8,6 +8,8 @@ _TBD_
 
 This project is a browser-based interactive sales deck for Dubai Mall, designed for live sales calls and standalone exploration. It tells the property story through cinematic scenes, non-linear navigation, data visualization, and modular call-to-action pathways for leasing, sponsorship, and events.
 
+The opening experience now includes a cinematic intro splash with video, logo, progress styling, and a sound-enabled start action. The deck itself is scene-based rather than page-scroll-based, so there is no traditional scrollbar by design.
+
 ## Tech Stack Table
 
 | Technology | Why it is used |
@@ -30,6 +32,19 @@ cd dubai-mall-deck
 npm install
 npm run dev
 ```
+
+## What Is Implemented
+
+- Scene-based navigation for opening, opportunity, retail, luxury, dining, attractions, events, and contact.
+- Global module paths for leasing, sponsorship, and events inquiries.
+- Accessible modal behavior with Escape-to-close and focus restoration.
+- Intro video splash with a start-with-sound action.
+- Production build and lint are verified locally.
+
+## Notes
+
+- The project intentionally does not use Vercel deployment configuration yet.
+- If you replace `/public/videos/Intro.mp4` with a new pitch video, the opening splash will use it automatically.
 
 ## AI Tools Used
 
