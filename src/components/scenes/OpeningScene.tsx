@@ -5,6 +5,8 @@ import { Sparkles } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { CTAButton } from '../ui/CTAButton';
 import { SceneFrame } from './SceneFrame';
+import { StatCard } from '../ui/StatCard';
+import { Section } from '../ui/Section';
 import { keyStats } from '../../data/stats';
 import { useDeckStore } from '../../store/deckStore';
 import { VideoBackground } from '../ui/VideoBackground';
@@ -29,22 +31,48 @@ export function OpeningScene() {
         title="The Most Visited Place on Earth"
         description="A cinematic sales deck for tenants, sponsors, and event partners who need to understand the scale, energy, and opportunity of the destination in seconds."
       >
-        <div className="flex flex-col gap-5 md:flex-row md:items-center">
-          <CTAButton variant="gold" onClick={() => goToScene('why')}>Explore the Property</CTAButton>
-          <CTAButton onClick={() => goToScene('contact')}>Request a Conversation</CTAButton>
-        </div>
-        <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
-          <motion.div className="grid gap-3 sm:grid-cols-3" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }}>
-            {keyStats.slice(0, 3).map((stat) => (
-              <div key={stat.label} className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] px-5 py-5 backdrop-blur-md shadow-lg shadow-black/15 transition hover:-translate-y-1 hover:border-gold/40">
-                <p className="text-[0.65rem] uppercase tracking-[0.35em] text-white/45">{stat.label}</p>
-                <p className="mt-3 font-display text-4xl text-gold">{stat.value}</p>
-              </div>
-            ))}
+        <div className="flex flex-col gap-8 lg:gap-12">
+          {/* CTA Section */}
+          <motion.div
+            className="flex flex-col gap-3 sm:flex-row sm:gap-4"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            <CTAButton variant="gold" onClick={() => goToScene('why')}>
+              Explore the Property
+            </CTAButton>
+            <CTAButton onClick={() => goToScene('contact')}>
+              Request a Conversation
+            </CTAButton>
           </motion.div>
-          <motion.div className="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(0,0,0,0.35))] p-6 shadow-2xl shadow-black/30" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65 }}>
+
+          {/* Stats Grid */}
+          <Section subtitle="Key Figures" delay={0.4}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {keyStats.map((stat, index) => (
+                <StatCard
+                  key={stat.label}
+                  label={stat.label}
+                  value={stat.value}
+                  highlight={index === 0}
+                  delay={0.45 + index * 0.08}
+                />
+              ))}
+            </div>
+          </Section>
+
+          {/* Insight Box */}
+          <motion.div
+            className="rounded-[2rem] border border-gold/30 bg-gold/5 px-6 sm:px-8 py-8 sm:py-10 backdrop-blur-md shadow-lg shadow-gold/5"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+          >
             <p className="text-xs uppercase tracking-[0.35em] text-gold">Pitch Snapshot</p>
-            <p className="mt-4 text-sm leading-7 text-white/70">111 million annual visitors. 1,200+ retail outlets. One destination that behaves like a global stage.</p>
+            <p className="mt-4 text-base sm:text-lg leading-8 text-white/80">
+              111 million annual visitors. 1,200+ retail outlets. One destination that behaves like a global stage.
+            </p>
           </motion.div>
         </div>
       </SceneFrame>

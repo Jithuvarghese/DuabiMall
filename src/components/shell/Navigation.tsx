@@ -61,13 +61,22 @@ export function Navigation() {
           })}
         </nav>
 
-        <div className="flex items-center justify-end gap-2 self-center justify-self-end">
+        <div className="hidden md:flex items-center justify-end gap-3 self-center justify-self-end">
+          <CTAButton variant="ghost" className="h-9 shrink-0 whitespace-nowrap px-4 text-[9px] leading-none md:h-10 md:px-5 md:text-[10px]" onClick={() => goToScene('contact')}>
+            Request a Meeting
+          </CTAButton>
+          <CTAButton variant="gold" className="h-9 shrink-0 whitespace-nowrap px-4 text-[9px] leading-none md:h-10 md:px-5 md:text-[10px]" onClick={() => goToScene('contact')}>
+            Contact
+          </CTAButton>
+        </div>
+
+        <div className="flex md:hidden items-center justify-end gap-2 self-center justify-self-end">
           <button
             type="button"
             aria-label="Open navigation menu"
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((value) => !value)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:border-gold/60 hover:text-gold lg:hidden"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:border-gold/60 hover:text-gold"
           >
             <span className="sr-only">Menu</span>
             <span className="relative flex h-4 w-4 items-center justify-center">
@@ -76,14 +85,11 @@ export function Navigation() {
               <span className={cn('absolute h-0.5 w-4 rounded-full bg-current transition-transform', menuOpen ? 'translate-y-0 -rotate-45' : 'translate-y-1.5')} />
             </span>
           </button>
-          <CTAButton variant="gold" className="h-8 shrink-0 whitespace-nowrap px-3 text-[8px] leading-none sm:h-9 sm:px-4 sm:text-[9px] md:h-10 md:text-[10px]" onClick={() => goToScene('contact')}>
-            Contact
-          </CTAButton>
         </div>
       </div>
 
       {menuOpen && (
-        <motion.div className="border-t border-white/10 bg-black/90 px-3 py-4 shadow-2xl backdrop-blur-2xl lg:hidden" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.18, ease: 'easeOut' }}>
+        <motion.div className="border-t border-white/10 bg-black/90 px-3 py-4 shadow-2xl backdrop-blur-2xl md:hidden" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.18, ease: 'easeOut' }}>
           <div className="mx-auto flex max-w-[1680px] flex-col gap-4">
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
               {sceneButtons.map((scene) => {
@@ -103,8 +109,11 @@ export function Navigation() {
                 );
               })}
             </div>
-            <div className="grid grid-cols-1 gap-2">
-              <CTAButton variant="gold" className="h-11 w-full justify-center px-4 text-[10px] leading-none" onClick={() => { goToScene('contact'); setMenuOpen(false); }}>
+            <div className="grid grid-cols-2 gap-2">
+              <CTAButton variant="ghost" className="h-10 justify-center px-4 text-[9px] leading-none" onClick={() => { goToScene('contact'); setMenuOpen(false); }}>
+                Request a Meeting
+              </CTAButton>
+              <CTAButton variant="gold" className="h-10 justify-center px-4 text-[9px] leading-none" onClick={() => { goToScene('contact'); setMenuOpen(false); }}>
                 Contact
               </CTAButton>
             </div>
