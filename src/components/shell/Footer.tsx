@@ -7,6 +7,21 @@ export function Footer() {
   const goToScene = useDeckStore((state) => state.goToScene);
   const sceneLinks = SCENES.filter((scene) => scene.id !== 'opening');
 
+  function scrollDeckToTop() {
+    const scrollContainer = document.querySelector('main');
+
+    if (scrollContainer instanceof HTMLElement) {
+      scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function navigateToScene(sceneId: string) {
+    goToScene(sceneId);
+    requestAnimationFrame(scrollDeckToTop);
+  }
+
   return (
     <footer className="border-t border-white/10 bg-black/40 backdrop-blur-md">
       <div className="mx-auto max-w-[1680px] px-3 py-12 sm:px-5 md:px-8 lg:px-10">
@@ -34,7 +49,7 @@ export function Footer() {
               {sceneLinks.slice(0, 5).map((scene) => (
                 <button
                   key={scene.id}
-                  onClick={() => goToScene(scene.id)}
+                  onClick={() => navigateToScene(scene.id)}
                   className="w-fit text-xs text-white/60 transition hover:text-gold"
                 >
                   {scene.label}
@@ -50,13 +65,13 @@ export function Footer() {
               {sceneLinks.slice(5).map((scene) => (
                 <button
                   key={scene.id}
-                  onClick={() => goToScene(scene.id)}
+                  onClick={() => navigateToScene(scene.id)}
                   className="w-fit text-xs text-white/60 transition hover:text-gold"
                 >
                   {scene.label}
                 </button>
               ))}
-              <button onClick={() => goToScene('contact')} className="w-fit text-xs text-white/60 transition hover:text-gold">
+              <button onClick={() => navigateToScene('contact')} className="w-fit text-xs text-white/60 transition hover:text-gold">
                 Get in Touch
               </button>
             </div>
@@ -93,9 +108,9 @@ export function Footer() {
               © 2026 Dubai Mall. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-start gap-x-6 gap-y-2 text-[10px] uppercase tracking-[0.2em] md:justify-end">
-              <button onClick={() => goToScene('opening')} className="text-white/40 transition hover:text-gold">Privacy Policy</button>
-              <button onClick={() => goToScene('opening')} className="text-white/40 transition hover:text-gold">Terms of Service</button>
-              <button onClick={() => goToScene('opening')} className="text-white/40 transition hover:text-gold">Cookies</button>
+              <button onClick={() => navigateToScene('opening')} className="text-white/40 transition hover:text-gold">Privacy Policy</button>
+              <button onClick={() => navigateToScene('opening')} className="text-white/40 transition hover:text-gold">Terms of Service</button>
+              <button onClick={() => navigateToScene('opening')} className="text-white/40 transition hover:text-gold">Cookies</button>
             </div>
           </div>
         </div>
