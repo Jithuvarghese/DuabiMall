@@ -2,7 +2,7 @@
 
 ## Live URL
 
-_TBD_
+Vercel deployment coming soon.
 
 ## Project Overview
 
@@ -41,10 +41,29 @@ npm run dev
 - Intro video splash with a start-with-sound action.
 - Production build and lint are verified locally.
 
+## Latest Updates
+
+- Intro splash progress now tracks the video playback instead of a scene timer.
+- Why scene progress animates on first visit and is preserved in local storage.
+- Luxury scene uses a tighter horizontal collection rail with no visible scrollbar.
+- Dining cuisine mix uses a fixed detail panel to avoid hover layout shifts.
+- Contact form now uses custom validation styling for required fields and email format.
+- Why scene includes an OpenStreetMap modal for the mall location.
+- Retail scene now includes a downloadable tenant list CSV with suggested image filenames.
+- Why scene audience mix now uses a denser bar-graph layout so it visually balances the catchment map column.
+- The dining and retail image slots now point at the user-provided assets in `public/images`.
+
 ## Notes
 
-- The project intentionally does not use Vercel deployment configuration yet.
 - If you replace `/public/videos/Intro.mp4` with a new pitch video, the opening splash will use it automatically.
+- The retail tenant list is generated from `src/data/stats.ts`, so the CSV download stays in sync with the scene.
+- The app is ready for Vercel with the default Next.js build command and no special runtime requirements.
+
+## Deployment Note
+
+CI and CD are useful here because the deck mixes animation, JSX, and stateful scene logic. The GitHub workflow catches broken markup or lint regressions before they are deployed, which is exactly what happened in the earlier header parse failure.
+
+For Vercel, connect the repository, keep the default `next build` output, and set the root directory to the project folder if prompted. No extra build steps are required beyond `npm install` and the standard Next.js deploy pipeline.
 
 ## AI Tools Used
 

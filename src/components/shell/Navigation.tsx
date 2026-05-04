@@ -11,6 +11,7 @@ import { useDeckStore } from '../../store/deckStore';
 export function Navigation() {
   const currentSceneId = useDeckStore((state) => state.currentSceneId);
   const goToScene = useDeckStore((state) => state.goToScene);
+  const openModal = useDeckStore((state) => state.openModal);
   const nextScene = useDeckStore((state) => state.nextScene);
   const previousScene = useDeckStore((state) => state.previousScene);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -34,6 +35,11 @@ export function Navigation() {
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [goToScene, nextScene, previousScene]);
+
+  function requestMeeting() {
+    openModal('meeting-request');
+    setMenuOpen(false);
+  }
 
   return (
     <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/40 backdrop-blur-2xl">
@@ -62,7 +68,7 @@ export function Navigation() {
         </nav>
 
         <div className="hidden md:flex items-center justify-end gap-3 self-center justify-self-end">
-          <CTAButton variant="ghost" className="h-9 shrink-0 whitespace-nowrap px-4 text-[9px] leading-none md:h-10 md:px-5 md:text-[10px]" onClick={() => goToScene('contact')}>
+          <CTAButton variant="ghost" className="h-9 shrink-0 whitespace-nowrap px-4 text-[9px] leading-none md:h-10 md:px-5 md:text-[10px]" onClick={requestMeeting}>
             Request a Meeting
           </CTAButton>
           <CTAButton variant="gold" className="h-9 shrink-0 whitespace-nowrap px-4 text-[9px] leading-none md:h-10 md:px-5 md:text-[10px]" onClick={() => goToScene('contact')}>
@@ -110,7 +116,7 @@ export function Navigation() {
               })}
             </div>
             <div className="grid grid-cols-2 gap-2">
-              <CTAButton variant="ghost" className="h-10 justify-center px-4 text-[9px] leading-none" onClick={() => { goToScene('contact'); setMenuOpen(false); }}>
+              <CTAButton variant="ghost" className="h-10 justify-center px-4 text-[9px] leading-none" onClick={requestMeeting}>
                 Request a Meeting
               </CTAButton>
               <CTAButton variant="gold" className="h-10 justify-center px-4 text-[9px] leading-none" onClick={() => { goToScene('contact'); setMenuOpen(false); }}>

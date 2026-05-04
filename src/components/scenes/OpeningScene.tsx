@@ -14,9 +14,18 @@ import { SCENES } from '../../data/scenes';
 
 export function OpeningScene() {
   const goToScene = useDeckStore((state) => state.goToScene);
+  const setFormPrefill = useDeckStore((state) => state.setFormPrefill);
   const currentSceneId = useDeckStore((state) => state.currentSceneId);
   const currentIndex = SCENES.findIndex((s) => s.id === currentSceneId);
   const openingIndex = SCENES.findIndex((s) => s.id === 'opening');
+
+  function requestMeeting() {
+    setFormPrefill({
+      category: 'leasing',
+      message: 'I would like to schedule a meeting to discuss Dubai Mall leasing opportunities.'
+    });
+    goToScene('contact');
+  }
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-black">
@@ -42,8 +51,8 @@ export function OpeningScene() {
             <CTAButton variant="gold" onClick={() => goToScene('why')}>
               Explore the Property
             </CTAButton>
-            <CTAButton onClick={() => goToScene('contact')}>
-              Request a Conversation
+            <CTAButton onClick={requestMeeting}>
+              Request a Meeting
             </CTAButton>
           </motion.div>
 

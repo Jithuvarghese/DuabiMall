@@ -10,9 +10,9 @@ export function Footer() {
   return (
     <footer className="border-t border-white/10 bg-black/40 backdrop-blur-md">
       <div className="mx-auto max-w-[1680px] px-3 py-12 sm:px-5 md:px-8 lg:px-10">
-        <div className="grid gap-8 md:gap-12 lg:grid-cols-[1.2fr_1fr_1fr_1.2fr]">
+        <div className="grid items-start gap-8 md:gap-12 lg:grid-cols-[1.2fr_1fr_1fr_1.2fr]">
           {/* Branding & Description */}
-          <div className="flex flex-col gap-4">
+          <div className="flex max-w-sm flex-col gap-4 self-start text-left">
             <div>
               <h3 className="font-display text-2xl font-light text-gold">Dubai Mall</h3>
               <p className="mt-2 text-xs uppercase tracking-[0.24em] text-white/50">United Arab Emirates</p>
@@ -28,14 +28,14 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="self-start text-left">
             <h4 className="text-xs uppercase tracking-[0.35em] text-gold">Explore</h4>
-            <div className="mt-4 flex flex-col gap-3">
+            <div className="mt-4 flex flex-col gap-3 text-left">
               {sceneLinks.slice(0, 5).map((scene) => (
                 <button
                   key={scene.id}
                   onClick={() => goToScene(scene.id)}
-                  className="text-xs text-white/60 transition hover:text-gold"
+                  className="w-fit text-xs text-white/60 transition hover:text-gold"
                 >
                   {scene.label}
                 </button>
@@ -44,28 +44,28 @@ export function Footer() {
           </div>
 
           {/* More Links */}
-          <div>
+          <div className="self-start text-left">
             <h4 className="text-xs uppercase tracking-[0.35em] text-gold">Resources</h4>
-            <div className="mt-4 flex flex-col gap-3">
+            <div className="mt-4 flex flex-col gap-3 text-left">
               {sceneLinks.slice(5).map((scene) => (
                 <button
                   key={scene.id}
                   onClick={() => goToScene(scene.id)}
-                  className="text-xs text-white/60 transition hover:text-gold"
+                  className="w-fit text-xs text-white/60 transition hover:text-gold"
                 >
                   {scene.label}
                 </button>
               ))}
-              <button onClick={() => goToScene('contact')} className="text-xs text-white/60 transition hover:text-gold">
+              <button onClick={() => goToScene('contact')} className="w-fit text-xs text-white/60 transition hover:text-gold">
                 Get in Touch
               </button>
             </div>
           </div>
 
           {/* Contact Info */}
-          <div>
+          <div className="self-start text-left">
             <h4 className="text-xs uppercase tracking-[0.35em] text-gold">Contact</h4>
-            <div className="mt-4 space-y-3">
+            <div className="mt-4 space-y-3 text-left">
               <div>
                 <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">Email</p>
                 <a href="mailto:leasing@dubaimall.com" className="text-xs text-white/70 transition hover:text-gold">
@@ -88,14 +88,14 @@ export function Footer() {
 
         {/* Divider */}
         <div className="mt-10 border-t border-white/10 pt-8 md:mt-12 md:pt-10">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
             <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">
               © 2026 Dubai Mall. All rights reserved.
             </p>
-            <div className="flex gap-6 text-[10px] uppercase tracking-[0.2em]">
-              <a href="#" className="text-white/40 transition hover:text-gold">Privacy Policy</a>
-              <a href="#" className="text-white/40 transition hover:text-gold">Terms of Service</a>
-              <a href="#" className="text-white/40 transition hover:text-gold">Cookies</a>
+            <div className="flex flex-wrap justify-start gap-x-6 gap-y-2 text-[10px] uppercase tracking-[0.2em] md:justify-end">
+              <button onClick={() => goToScene('opening')} className="text-white/40 transition hover:text-gold">Privacy Policy</button>
+              <button onClick={() => goToScene('opening')} className="text-white/40 transition hover:text-gold">Terms of Service</button>
+              <button onClick={() => goToScene('opening')} className="text-white/40 transition hover:text-gold">Cookies</button>
             </div>
           </div>
         </div>

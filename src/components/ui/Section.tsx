@@ -31,7 +31,7 @@ export function Section({ title, subtitle, children, className, delay = 0 }: Sec
           )}
         </div>
       )}
-      <div className="space-y-4">{children}</div>
+      <div className="flex min-h-0 flex-1 flex-col gap-4 sm:gap-5 md:gap-6">{children}</div>
     </motion.div>
   );
 }
