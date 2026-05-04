@@ -42,7 +42,7 @@ export function ContactScene() {
       title="Your brand. The world’s stage."
       description="Choose the path that fits your business goal and keep the experience inside the deck, the way the brief asks for."
     >
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div className="grid gap-4 lg:grid-cols-3">
         {[
           ['leasing', 'Retail Leasing'],
           ['sponsorship', 'Brand Partnerships'],
@@ -54,11 +54,11 @@ export function ContactScene() {
               setActivePath(key as typeof activePath);
               openModule(key as 'leasing' | 'sponsorship' | 'events');
             }}
-            className="rounded-[2rem] border border-white/10 bg-white/5 p-6 text-left transition hover:border-gold/50 hover:bg-gold/10"
+            className={key === activePath ? 'rounded-[2rem] border border-gold bg-gold/10 p-6 text-left transition' : 'rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 text-left transition hover:border-gold/50 hover:bg-gold/10'}
           >
             <p className="text-xs uppercase tracking-[0.3em] text-gold">CTA</p>
             <h3 className="mt-3 font-display text-3xl text-white">{label}</h3>
-            <p className="mt-3 text-sm text-white/65">Open the matching module and keep the conversation within the deck experience.</p>
+            <p className="mt-3 text-sm leading-7 text-white/68">Open the matching module and keep the conversation within the deck experience.</p>
           </button>
         ))}
       </div>
@@ -66,7 +66,7 @@ export function ContactScene() {
         Active path: <span className="text-gold">{activePath}</span>
       </div>
 
-      <form onSubmit={handleSubmit} className="mt-8 grid gap-3 rounded-[1.5rem] border border-white/10 bg-white/5 p-4 sm:gap-4 sm:p-6 md:p-8">
+      <form onSubmit={handleSubmit} className="mt-8 grid gap-3 rounded-[2rem] border border-white/10 bg-white/[0.04] p-4 shadow-2xl shadow-black/20 sm:gap-4 sm:p-6 md:p-8">
         <div className="grid gap-3 grid-cols-1 sm:grid-cols-2">
           <input required className="rounded-md bg-black/10 p-3 text-white text-sm sm:text-base placeholder-white/50" placeholder="Your name" value={form.name} onChange={(e) => setForm((s) => ({ ...s, name: e.target.value }))} />
           <input required type="email" className="rounded-md bg-black/10 p-3 text-white text-sm sm:text-base placeholder-white/50" placeholder="Email" value={form.email} onChange={(e) => setForm((s) => ({ ...s, email: e.target.value }))} />

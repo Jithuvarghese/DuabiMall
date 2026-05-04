@@ -13,7 +13,6 @@ export function Navigation() {
   const goToScene = useDeckStore((state) => state.goToScene);
   const nextScene = useDeckStore((state) => state.nextScene);
   const previousScene = useDeckStore((state) => state.previousScene);
-  const openModule = useDeckStore((state) => state.openModule);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const sceneButtons = SCENES.filter((scene) => scene.id !== 'opening');
@@ -77,9 +76,6 @@ export function Navigation() {
               <span className={cn('absolute h-0.5 w-4 rounded-full bg-current transition-transform', menuOpen ? 'translate-y-0 -rotate-45' : 'translate-y-1.5')} />
             </span>
           </button>
-          <CTAButton className="hidden h-8 shrink-0 whitespace-nowrap px-3 text-[8px] leading-none sm:h-9 sm:px-4 sm:text-[9px] md:h-10 md:text-[10px] lg:inline-flex" onClick={() => openModule('events')}>
-            Request a Meeting
-          </CTAButton>
           <CTAButton variant="gold" className="h-8 shrink-0 whitespace-nowrap px-3 text-[8px] leading-none sm:h-9 sm:px-4 sm:text-[9px] md:h-10 md:text-[10px]" onClick={() => goToScene('contact')}>
             Contact
           </CTAButton>
@@ -107,10 +103,7 @@ export function Navigation() {
                 );
               })}
             </div>
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              <CTAButton className="h-11 w-full justify-center px-4 text-[10px] leading-none" onClick={() => openModule('events')}>
-                Request a Meeting
-              </CTAButton>
+            <div className="grid grid-cols-1 gap-2">
               <CTAButton variant="gold" className="h-11 w-full justify-center px-4 text-[10px] leading-none" onClick={() => { goToScene('contact'); setMenuOpen(false); }}>
                 Contact
               </CTAButton>

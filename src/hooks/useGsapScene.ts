@@ -1,14 +1,20 @@
 'use client';
 
 import { useLayoutEffect, useRef } from 'react';
-import { gsap } from 'gsap';
 
 export const useGsapScene = () => {
   const scope = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
-    const context = gsap.context(() => undefined, scope);
-    return () => context.revert();
+    let cleanup: () => void = () => {};
+
+    (async () => {
+      const { gsap } = await import('gsap');
+      const context = gsap.context(() => undefined, scope);
+      cleanup = () => context.revert();
+    })();
+
+    return () => cleanup();
   }, []);
 
   return scope;

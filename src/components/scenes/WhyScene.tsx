@@ -15,7 +15,7 @@ export function WhyScene() {
       <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.25fr_0.75fr]">
         <div className="grid gap-3 sm:gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {keyStats.map((stat) => (
-            <div key={stat.label} className="rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
+              <div key={stat.label} className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-md shadow-lg shadow-black/15 transition hover:-translate-y-1 hover:border-gold/40">
               <p className="text-xs uppercase tracking-[0.3em] text-white/45">{stat.label}</p>
               <p className="mt-4 font-display text-4xl text-gold"><AnimatedCounter value={Number.parseInt(stat.value.replace(/[^0-9]/g, ''), 10) || 0} suffix={stat.value.replace(/[0-9,]/g, '')} /></p>
             </div>
