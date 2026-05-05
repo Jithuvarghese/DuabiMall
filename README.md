@@ -2,7 +2,7 @@
 
 ## Live URL
 
-Vercel deployment coming soon.
+https://dubaimall-three.vercel.app/
 
 ## Project Overview
 
@@ -63,7 +63,7 @@ npm run dev
 
 CI and CD are useful here because the deck mixes animation, JSX, and stateful scene logic. The GitHub workflow catches broken markup or lint regressions before they are deployed, which is exactly what happened in the earlier header parse failure.
 
-For Vercel, connect the repository, keep the default `next build` output, and set the root directory to the project folder if prompted. No extra build steps are required beyond `npm install` and the standard Next.js deploy pipeline.
+For Vercel, connect the repository, keep the default `next build` output, and set the root directory to the project folder if prompted. No extra build steps are required beyond `npm install` and the standard Next.js deploy pipeline. The current live deployment is at https://dubaimall-three.vercel.app/.
 
 ## AI Tools Used
 

@@ -105,11 +105,11 @@ export function DiningScene() {
                     exit={{ opacity: 0, y: 8 }}
                   >
                     <p className="text-[10px] uppercase tracking-[0.3em] text-gold/90">Selected Cuisine</p>
-                    <h3 className="mt-2 font-display text-2xl sm:text-3xl text-white leading-tight">{cuisineMap[activeCuisine].title}</h3>
-                    <p className="mt-3 max-w-lg text-sm leading-7 text-white/70">{cuisineMap[activeCuisine].note}</p>
+                    <h3 className="mt-2 font-display text-xl sm:text-2xl lg:text-3xl text-white leading-snug truncate">{cuisineMap[activeCuisine].title}</h3>
+                    <p className="mt-3 max-w-lg text-xs sm:text-sm leading-6 sm:leading-7 text-white/70">{cuisineMap[activeCuisine].note}</p>
                     <div className="mt-auto flex flex-wrap gap-2 pt-4">
                       {cuisineMap[activeCuisine].dishes.map((dish) => (
-                        <span key={dish} className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[10px] uppercase tracking-[0.2em] text-white/60 whitespace-nowrap">
+                        <span key={dish} className="rounded-full border border-white/10 bg-white/[0.04] px-3 sm:px-4 py-1.5 sm:py-2 text-[8px] sm:text-[10px] uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/60 whitespace-nowrap">
                           {dish}
                         </span>
                       ))}
